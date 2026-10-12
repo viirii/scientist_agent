@@ -219,3 +219,9 @@ The version-date policy, benchmark design, budgets, and contracts above are proj
 ## Implemented Atlas state storage (October 11, 2026)
 
 State now lives in scientist_state: state_meta commits the run inventory/revision and fenced renewable global lease, state_parts stores hashed immutable run generations in Unicode-safe chunks, and state_events stores individual append-only events/raw model responses. Majority transactions atomically commit state changes and budget reservations. The current writer is reused temporarily by explicit user choice; dedicated state/evaluator credentials and corpus-reader database restriction remain pending. Global state leasing supports serialized workers, not parallel per-run scheduling; background jobs remain a separate milestone.
+
+### Bounded recursive strategy implementation
+
+The recursive harness may propose only these settings: `prioritizeRecent` (boolean), `searchApproach` (`focused`/`broaden`), `readingDepth` (`full_text`/`abstract_screen`), `papersPerCycle` (1–2), and `researchFocus` (`balanced`/`challenge_hypothesis`/`resolve_gap`). Both arms start with the same effective defaults. Temporal gating, credentials, citations, monthly cycle/call/context budgets and evaluator isolation are immutable.
+
+Each synthesis receives recent retrieval counts, deferrals/fallbacks, failures and unresolved-hypothesis counts. This is process feedback, not benchmark scores. Proposals require a reason and expected benefit; schema validation and no-op checks precede promotion. Promotions preserve parent lineage and take effect next cycle. Failed execution trials restore the parent; successful trials record execution success without asserting scientific improvement. Raw outputs and strategy events remain cached in Mongo. Changes to the model contract change its prompt hash; prior runs remain readable, and new comparisons require fresh paired runs. Live effectiveness evaluation remains pending.

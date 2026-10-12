@@ -1,3 +1,4 @@
+import {strategyProperties} from './strategy.js';
 import { ReplayError } from '../errors.js';
 const str=(max=1000)=>({type:'string',minLength:1,maxLength:max});
 const array=(items,maxItems)=>({type:'array',items,maxItems});
@@ -6,11 +7,11 @@ export const querySchema=object({query:{type:'string',maxLength:256}});
 export const selectionSchema=object({read_ids:array(str(500),2)});
 const citation=object({version_id:str(500),quote_start:{type:'integer',minimum:0},quote_end:{type:'integer',minimum:1},quote:str(600),relation:{type:'string',enum:['supports','contradicts','context']}});
 export const cycleSchema=object({
- hypothesis_updates:array(object({id:str(80),claim:str(),p_true:{type:'number',minimum:0,maximum:1},status:{type:'string',enum:['open','supported','refuted']},rationale:str(),evidence_refs:array(citation,4)}),3),
- memory_updates:array(object({kind:{type:'string',enum:['summary','lesson']},text:str(),evidence_refs:array(citation,4)}),3),
+ hypothesis_updates:array(object({id:str(80),claim:str(),p_true:{type:'number',minimum:0,maximum:1},status:{type:'string',enum:['open','supported','refuted']},rationale:str(),evidence_refs:{...array(citation,4),minItems:1}}),3),
+ memory_updates:array(object({kind:{type:'string',enum:['summary','lesson']},text:str(),evidence_refs:{...array(citation,4),minItems:1}}),3),
  next_questions:array(str(256),3),
- lab_requests:array(object({hypothesis_id:str(80),question:str(500),why_it_matters:str(500),goal_connection:str(500),competing_explanations:array(str(300),3),evidence_needed:str(500),limitations:str(500),priority:{type:'string',enum:['high','medium','low']},evidence_refs:array(citation,4),evidence_category:{type:'string',enum:['published_observation','literature_comparison']},discriminating_outcomes:array(str(200),3)}),2),
- harness_proposal:{anyOf:[{type:'null'},object({prioritizeRecent:{type:'boolean'},reason:str(500)})]}
+ lab_requests:array(object({hypothesis_id:str(80),question:str(500),why_it_matters:str(500),goal_connection:str(500),competing_explanations:array(str(300),3),evidence_needed:str(500),limitations:str(500),priority:{type:'string',enum:['high','medium','low']},evidence_refs:{...array(citation,4),minItems:1},evidence_category:{type:'string',enum:['published_observation','literature_comparison']},discriminating_outcomes:array(str(200),3)}),2),
+ harness_proposal:{anyOf:[{type:'null'},object({...strategyProperties,reason:str(500),expected_benefit:str(500)})]}
 });
 export function validate(schema,value) {
  if(schema.anyOf){if(!schema.anyOf.some(s=>{try{validate(s,value);return true;}catch{return false;}}))throw new ReplayError('Invalid model output',422);return value;}

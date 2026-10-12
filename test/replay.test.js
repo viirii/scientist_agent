@@ -139,3 +139,11 @@ test('HTTP local flow, idempotency, future evidence denial, host and origin prot
     assert.equal((await fetch(`${base}/api/pairs/${pair.id}`)).status,200);
   } finally { await new Promise(resolve=>server.close(resolve)); }
 });
+
+test('new runs have separate cache identities without replacing saved fallback runs',async()=>{
+ const store=new MemoryStore(),service=new ReplayService(store);
+ const first=await service.create();await service.step(first.id,'january');const saved=JSON.stringify(await service.get(first.id));
+ const next=await service.create();assert.notEqual(next.id,first.id);assert.notEqual(next.runHash,first.runHash);assert.equal(next.configHash,first.configHash);
+ assert.equal(next.runHash,createHash('sha256').update(JSON.stringify({id:next.id,configHash:next.configHash})).digest('hex'));
+ assert.equal(JSON.stringify(await service.get(first.id)),saved);assert.equal(next.checkpoints.length,0);
+});

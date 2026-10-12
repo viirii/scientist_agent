@@ -1,3 +1,5 @@
+import {reviewStrategy} from './agent/strategy-review.js';
+import {strategyDefaults,strategyProperties} from './agent/strategy.js';
 import {reviewLastMonth} from './monthly-review.js';
 import { runReasoningCycle, reasoningBudget } from './agent/loop.js';
 import { promptHash } from './agent/model.js';
@@ -82,8 +84,11 @@ export class ReplayService {
   create() {
     return this.mutate(async state => {
       if(this.mongoProvider)await this.mongoProvider.ready();
-      const pair = { id: randomUUID(), mode: this.mongoProvider?'mongo_corpus':'synthetic_fixture', corpusVersion:this.runtime().corpusVersion, ...(this.mongoProvider?.baselineCorpusVersion?{baselineCorpusVersion:this.mongoProvider.baselineCorpusVersion}:{}), agentEngine:this.runtime().agentEngine, ...(this.modelAdapter?{modelConfig:{model:this.modelAdapter.model,reasoningEffort:this.modelAdapter.reasoningEffort||null,promptHash,budget:reasoningBudget},goal:longTermGoal}:{}), month: 1, status: 'ready', createdAt: new Date().toISOString(), checkpoints: [], requests: {},
+      const pair = { id: randomUUID(), mode: this.mongoProvider?'mongo_corpus':'synthetic_fixture', corpusVersion:this.runtime().corpusVersion, ...(this.mongoProvider?.baselineCorpusVersion?{baselineCorpusVersion:this.mongoProvider.baselineCorpusVersion}:{}), agentEngine:this.runtime().agentEngine, ...(this.modelAdapter?{modelConfig:{monthlyStrategyReview:true,model:this.modelAdapter.model,reasoningEffort:this.modelAdapter.reasoningEffort||null,promptHash,budget:reasoningBudget},goal:longTermGoal}:{}), month: 1, status: 'ready', createdAt: new Date().toISOString(), checkpoints: [], requests: {},
         arms: ['fixed', 'recursive'].map(name => ({ name, cycles: 0, hypotheses: [], readings:[], memory: [], events: [], usage: { retrievalCalls: 0, labRequests: 0, modelTokens: 0 }, harness: { version: 1, config: { prioritizeRecent: false } } })) };
+      pair.runManifest={schemaVersion:1,corpusVersion:pair.corpusVersion,baselineCorpusVersion:pair.baselineCorpusVersion||null,agentEngine:pair.agentEngine,modelConfig:pair.modelConfig||null,goal:pair.goal||longTermGoal,strategyContract:{version:2,defaults:strategyDefaults,settings:strategyProperties}};
+      pair.configHash=hash(pair.runManifest);
+      pair.runHash=hash({id:pair.id,configHash:pair.configHash});
       state.pairs.push(pair); return pair;
     });
   }
@@ -102,6 +107,7 @@ export class ReplayService {
           await this.store.save(state); // Paid successful cycles survive a later failure and retry.
         }else if(pair.mode==='mongo_corpus')await runMongoCycle(pair,arm,this.provider(pair));else runCycle(pair,arm);
       }
+      if(pair.modelConfig?.monthlyStrategyReview){try{await reviewStrategy(pair,this.modelAdapter,event,()=>this.store.save(state));}catch(error){event(pair.arms.find(a=>a.name==='recursive'),pair,'strategy_review_failed',{message:error instanceof ReplayError?error.message:'Strategy review failed'});return pair;}}
       const snapshots = pair.arms.map(arm => {
         const snapshot = { arm: arm.name, cutoff: cutoffFor(pair.month), month: pair.month, lastSeq: arm.events.length,
           agenda:structuredClone(arm.agenda||[]),researchRequests:structuredClone(arm.researchRequests||[]), hypotheses: structuredClone(arm.hypotheses), readings:structuredClone(arm.readings||[]), memory: structuredClone(arm.memory), harness: structuredClone(arm.harness), usage: structuredClone(arm.usage) };
@@ -118,9 +124,10 @@ export class ReplayService {
   }
   review(id,month) {return this.mutate(async state=>{const pair=state.pairs.find(p=>p.id===id);if(!pair)throw new ReplayError('Pair not found',404);if(pair.mode!=='mongo_corpus'||!this.modelAdapter)throw new ReplayError('Literature review requires model and Mongo access',400);await reviewLastMonth(pair,month,this.provider(pair),this.modelAdapter,()=>this.store.save(state));return pair;});}
   advance(id) {
-    return this.mutate(state => {
+    return this.mutate(async state => {
       const pair = state.pairs.find(p => p.id === id); if (!pair) throw new ReplayError('Pair not found', 404);
       if (pair.status !== 'checkpoint' || pair.checkpoints.at(-1)?.snapshots.length !== 2) throw new ReplayError('Both frozen checkpoints are required before advance', 409);
+      await reviewStrategy(pair,this.modelAdapter,event,()=>this.store.save(state));
       pair.month++; pair.status = 'ready'; return pair;
     });
   }

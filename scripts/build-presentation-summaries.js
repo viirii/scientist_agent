@@ -19,18 +19,20 @@ try {
  await client.close();
  await mkdir(cacheDir,{recursive:true});
  const model=new OpenAIModel({apiKey:process.env.OPENAI_API_KEY,model:process.env.OPENAI_MODEL});
- const targets=[...pair.arms,...pair.checkpoints.flatMap(c=>c.snapshots)];
+ const arms=[...pair.arms.map(a=>({...a,month:pair.month})),...pair.checkpoints.flatMap(c=>c.snapshots.map(a=>({...a,month:c.month})))];
+ const claims=[...arms.flatMap(a=>a.hypotheses.map(h=>h.claim)),...Object.values(pair.monthlyReviews||{}).flatMap(r=>Object.values(r.arms).flatMap(a=>(a.hypotheses||[]).map(h=>h.subject).filter(Boolean)))];
+ const targets=[...arms,...[...new Set(claims)].map(claim=>({hypotheses:[{claim,status:'open',pTrue:1}],memory:[],agenda:[],researchRequests:[]}))];
  for(const arm of targets){
   const hypothesis=[...arm.hypotheses].filter(h=>h.status!=='rejected').sort((a,b)=>b.pTrue-a.pTrue)[0];
-  const sourceKnowledge=hypothesis?.claim||arm.memory.at(-1)?.text||'';
-  const sourceNext=arm.agenda?.[0]||arm.researchRequests?.at(-1)?.question||'';
+  const sourceKnowledge=arm.month?arm.memory.filter(note=>note.month===arm.month).map(note=>note.text).join('\n'):hypothesis?.claim||'';
+  const sourceNext=arm.month?(arm.researchRequests||[]).filter(plan=>plan.month===arm.month).map(plan=>JSON.stringify({question:plan.question,goal:plan.goal_connection,evidence:plan.evidence_needed,outcomes:plan.discriminating_outcomes})).join('\n'):'';
   if(!sourceKnowledge&&!sourceNext)continue;
   if(entries.some(e=>e.sourceKnowledge===sourceKnowledge&&e.sourceNext===sourceNext))continue;
-  const key=createHash('sha256').update(JSON.stringify({sourceKnowledge,sourceNext,version:1,model:process.env.OPENAI_MODEL})).digest('hex');
+  const key=createHash('sha256').update(JSON.stringify({sourceKnowledge,sourceNext,version:3,model:process.env.OPENAI_MODEL})).digest('hex');
   const rawPath=new URL(`${key}.json`,cacheDir);
   let cached;try{cached=JSON.parse(await readFile(rawPath,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
   if(!cached){
-   const response=await model.complete({name:'presentation_summary',schema:{type:'object',properties:{knowledge:{type:'string'},next:{type:'string'}},required:['knowledge','next'],additionalProperties:false},maxOutputTokens:700,context:{task:'Rewrite these two saved texts for a non-scientist. This is a presentation-only paraphrase, not research. Use 1–2 short complete sentences per field, everyday words, and explain essential jargon simply. Preserve uncertainty, qualifications, and distinctions between hypotheses and established findings. Do not add facts from your own knowledge. For next, describe what we will investigate, never claim experiments happened. No protocols. No ellipses or cut-off sentences. Empty source means no findings or no plan yet.',sourceKnowledge,sourceNext},onResponse:async raw=>{await writeFile(new URL(`${key}.raw.json`,cacheDir),JSON.stringify(raw,null,2));}});
+   const response=await model.complete({name:'presentation_summary',schema:{type:'object',properties:{knowledge:{type:'string'},next:{type:'string'}},required:['knowledge','next'],additionalProperties:false},maxOutputTokens:700,context:{task:(arm.month?'Summarize this month’s saved literature learning notes in knowledge, and synthesize its saved proposed studies in next. Use 2–4 concise bullet points per field separated by newlines. Cover the main distinct themes. These are findings from reviewed papers, not an exhaustive summary of all available literature. These are planned studies, not performed experiments. Preserve uncertainty. Do not add new facts or experiment methods. Explain in everyday words. ':'')+'Rewrite these two saved texts for a non-scientist. This is a presentation-only paraphrase, not research. For standalone hypothesis labels use one short sentence; for monthly summaries use the bullet instructions above. Use everyday words and simplify jargon. Prioritize the central claim; preserve essential uncertainty and limitations. For standalone hypothesis labels, write a concise plain-language claim, not a summary of researchers or studies. Preserve uncertainty, qualifications, and distinctions between hypotheses and established findings. Do not add facts from your own knowledge. For next, describe what we will investigate, never claim experiments happened. No protocols. No ellipses or cut-off sentences. Empty source means no findings or no plan yet.',sourceKnowledge,sourceNext},onResponse:async raw=>{await writeFile(new URL(`${key}.raw.json`,cacheDir),JSON.stringify(raw,null,2));}});
    cached={...response,sourceKnowledge,sourceNext};await writeFile(rawPath,JSON.stringify(cached,null,2));
   }
   entries.push({sourceKnowledge,sourceNext,knowledge:cached.value.knowledge,next:cached.value.next});

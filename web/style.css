@@ -76,3 +76,7 @@ footer{padding-top:24px;border-top:1px solid var(--line)}
 .research-flow p{font-size:14px;line-height:1.6;margin:10px 0 0}
 .research-flow .split-summary section:last-child h3{color:var(--red)}
 .research-flow .split-summary section:last-child .flow-step{background:var(--red);border-color:var(--red);color:white}
+
+.summary-bullets{padding-left:20px;margin:10px 0}.summary-bullets li{margin:8px 0}.review-status-list{list-style:none;padding:0;margin:12px 0}.review-status-list>li{padding:12px 0;border-top:1px solid var(--line)}.review-status-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.review-status{font-size:11px;font-weight:650;padding:5px 9px;border-radius:20px;background:#efeae5;color:#625851}.review-status.supported{background:#e7f0e9;color:#315c40}.review-status.challenged{background:#fbe5e1;color:#96372d}.review-status.partly_addressed{background:#faf0db;color:#7b5a20}
+
+.eli5-takeaway{font-size:15px;line-height:1.5;margin:10px 0 16px}.research-summary .eli5-takeaway strong{font-size:inherit;color:var(--ink)}
