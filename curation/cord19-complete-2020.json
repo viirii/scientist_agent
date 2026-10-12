@@ -1,0 +1,80 @@
+{
+  "corpus_version": "cord19-2020-complete-v1",
+  "scope": "All records from eleven official March\u2013December 2020 metadata snapshots, and all available parses from the initial and year-end archives; no topic filter or sampling caps",
+  "chunk_policy": "virtual_1600_character_chunks_from_verified_paper",
+  "snapshots": [
+    {
+      "release": "2020-03-13",
+      "metadata_file": "data/cord19/metadata-2020-03-13.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/all_sources_metadata_2020-03-13.csv",
+      "observed_at": "2020-03-16T17:30:08.000Z",
+      "archive_file": "data/cord19/cord-19_2020-03-13.tar.gz",
+      "archive_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/historical_releases/cord-19_2020-03-13.tar.gz",
+      "archive_observed_at": "2020-05-19T01:45:26.000Z"
+    },
+    {
+      "release": "2020-03-27",
+      "metadata_file": "data/cord19/metadata-2020-03-27.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-27/metadata.csv",
+      "observed_at": "2020-03-27T22:44:50Z"
+    },
+    {
+      "release": "2020-04-24",
+      "metadata_file": "data/cord19/metadata-2020-04-24.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-04-24/metadata.csv",
+      "observed_at": "2020-04-24T21:53:38Z"
+    },
+    {
+      "release": "2020-05-31",
+      "metadata_file": "data/cord19/metadata-2020-05-31.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-05-31/metadata.csv",
+      "observed_at": "2020-05-31T22:35:48Z"
+    },
+    {
+      "release": "2020-06-30",
+      "metadata_file": "data/cord19/metadata-2020-06-30.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-06-30/metadata.csv",
+      "observed_at": "2020-06-30T23:47:47Z"
+    },
+    {
+      "release": "2020-07-31",
+      "metadata_file": "data/cord19/metadata-2020-07-31.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-07-31/metadata.csv",
+      "observed_at": "2020-07-31T20:16:37Z"
+    },
+    {
+      "release": "2020-08-29",
+      "metadata_file": "data/cord19/metadata-2020-08-29.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-08-29/metadata.csv",
+      "observed_at": "2020-08-29T20:39:03Z"
+    },
+    {
+      "release": "2020-09-28",
+      "metadata_file": "data/cord19/metadata-2020-09-28.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-09-28/metadata.csv",
+      "observed_at": "2020-09-28T21:05:13Z"
+    },
+    {
+      "release": "2020-10-31",
+      "metadata_file": "data/cord19/metadata-2020-10-31.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-10-31/metadata.csv",
+      "observed_at": "2020-10-31T21:45:39Z"
+    },
+    {
+      "release": "2020-11-29",
+      "metadata_file": "data/cord19/metadata-2020-11-29.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-11-29/metadata.csv",
+      "observed_at": "2020-11-29T22:50:26Z"
+    },
+    {
+      "release": "2020-12-31",
+      "metadata_file": "data/cord19/metadata-2020-12-31.csv",
+      "metadata_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-12-31/metadata.csv",
+      "observed_at": "2020-12-31T23:11:21.000Z",
+      "archive_file": "data/cord19/document-parses-2020-12-31.tar.gz",
+      "archive_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-12-31/document_parses.tar.gz",
+      "archive_observed_at": "2020-12-31T23:11:21.000Z",
+      "archive_bytes": 3847283394
+    }
+  ]
+}

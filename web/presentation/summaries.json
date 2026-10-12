@@ -1,0 +1,86 @@
+[
+  {
+    "sourceKnowledge": "Across the included literature, SARS-CoV-2 RNA shedding may persist in respiratory and stool specimens, but viable-virus detection appears concentrated early in illness; RNA detection alone does not establish infectiousness or fecal-oral transmission.",
+    "sourceNext": "Do independent published biochemical or cell-based studies test the four nominated compounds against SARS-CoV-2 main protease or viral replication?",
+    "knowledge": "Studies suggest that SARS-CoV-2 genetic material can remain detectable in respiratory samples and stool for some time. However, live virus is usually found early in illness, and finding genetic material alone does not show that someone is infectious or that the virus spreads through feces.",
+    "next": "We will investigate whether independent published laboratory studies tested the four nominated compounds against SARS-CoV-2’s main protease, an enzyme the virus needs, or against viral replication, the process by which the virus makes more copies of itself."
+  },
+  {
+    "sourceKnowledge": "ACE2 expression in maternal-fetal and fetal tissues is a hypothesis-generating anatomical observation, not proof of SARS-CoV-2 entry, vertical transmission, disease susceptibility, or a therapeutic target; functional entry remains context-dependent and requires SARS-CoV-2-specific validation.",
+    "sourceNext": "Compare published SARS-CoV-2 household and healthcare transmission studies with the supplied MERS transmission observations to determine whether pediatric transmission differs by setting and whether infection-control context explains observed rates.",
+    "knowledge": "Researchers have observed ACE2, a cell-surface protein, in tissues connecting or belonging to the mother and fetus. This observation suggests possible areas for study, but it does not show that SARS-CoV-2 enters these tissues, passes from mother to fetus, causes disease there, or that ACE2 is a treatment target; those possibilities still need virus-specific testing.",
+    "next": "We will compare published studies of SARS-CoV-2 spread in households and healthcare settings with the supplied observations about MERS spread. The goal is to assess whether spread involving children differs by setting and whether infection-control conditions might explain the reported rates."
+  },
+  {
+    "sourceKnowledge": "Pre-2020 literature supports investigating coronavirus receptor usage and zoonotic evolution as foundations for understanding human interaction, but the supplied abstract does not identify SARS-CoV-2 receptor usage, tissue tropism, transmission, or pathogenesis.",
+    "sourceNext": "Do early SARS-CoV-2 studies identify receptor usage or entry determinants that are shared with, or distinct from, SARS-CoV and MERS-CoV?",
+    "knowledge": "Earlier literature supports examining how coronaviruses use cell receptors and evolve between animals and humans. The supplied abstract does not establish which receptor SARS-CoV-2 uses, which tissues it affects, how it spreads, or how it causes disease.",
+    "next": "We will investigate whether early SARS-CoV-2 studies identified cell-receptor use or entry factors that were shared with, or different from, those of SARS-CoV and MERS-CoV."
+  },
+  {
+    "sourceKnowledge": "Coronavirus spike protein, including receptor-binding regions, is a plausible prevention target, but the supplied evidence does not establish protection against SARS-CoV-2 or safety and efficacy in humans.",
+    "sourceNext": "What published evidence available by the cutoff identifies SARS-CoV-2 host-cell receptor usage and connects receptor interaction with human-tissue tropism or disease?",
+    "knowledge": "The coronavirus spike protein, especially the parts that attach to cells, could be a useful prevention target. However, the supplied evidence does not show that targeting it protects people from SARS-CoV-2, or that such approaches are safe and effective in humans.",
+    "next": "We will review published evidence available by the cutoff on which human-cell receptor SARS-CoV-2 uses. We will also examine whether receptor attachment is linked to which human tissues the virus can affect or to disease, without treating these links as proven unless the evidence supports them."
+  },
+  {
+    "sourceKnowledge": "SARS-CoV-2 directly infects respiratory and gastrointestinal-relevant human sites, and ACE2-associated gastrointestinal epithelial findings support—but do not by themselves establish—the extent or route of transmission.",
+    "sourceNext": "Do gastrointestinal samples contain replication-competent SARS-CoV-2, and how does this relate to documented transmission risk?",
+    "knowledge": "Studies have found SARS-CoV-2, the virus that causes COVID-19, in human respiratory and digestive-system tissues. Findings involving ACE2, a cell-entry protein, support the possibility of digestive-system infection, but they do not by themselves show how much this contributes to spread or exactly how transmission occurs.",
+    "next": "We will investigate whether digestive-system samples contain live, able-to-reproduce SARS-CoV-2 and how that evidence relates to documented transmission risk."
+  },
+  {
+    "sourceKnowledge": "Spike-directed immunity is a plausible prevention target, but breadth and protection remain unresolved; conserved non-spike functions may also warrant comparative investigation.",
+    "sourceNext": "Do SARS-CoV-2 vaccine or antibody studies available by the cutoff measure neutralization across diverse isolates and relate it to protection rather than binding alone?",
+    "knowledge": "Targeting the virus’s spike protein may help prevent infection, but it is still unclear how broadly and reliably this protection works. Other, less variable parts of the virus may also deserve comparison as possible targets.",
+    "next": "We will investigate whether available SARS-CoV-2 vaccine and antibody studies measured the ability to block diverse virus variants and connected those results with protection, rather than measuring attachment alone."
+  },
+  {
+    "sourceKnowledge": "SARS-CoV-2 gastrointestinal RNA or antigen findings support gastrointestinal involvement, but the supplied evidence does not establish replication-competent virus or fecal-oral transmission.",
+    "sourceNext": "Do independent SARS-CoV-2 studies combine gastrointestinal infectious-virus or replication evidence with exposure timing, contact tracing, and genomic data to test whether gastrointestinal shedding contributes to transmission?",
+    "knowledge": "Studies have found SARS-CoV-2 genetic material or virus proteins in the digestive system, which supports possible gut involvement. However, the evidence provided does not show that live, replicating virus is present or that the virus spreads through feces by mouth.",
+    "next": "We will investigate whether independent studies combine evidence of infectious or replicating virus in the digestive system with exposure timing, contact tracing, and genetic comparisons of viruses. This would help test whether virus released from the digestive system contributes to transmission."
+  },
+  {
+    "sourceKnowledge": "SARS-CoV-2 entry is multifactorial, with human ACE2 confirmed as a receptor and host protease processing acting as an important entry barrier; the functional importance of other candidate receptors remains unresolved.",
+    "sourceNext": "Across human-relevant airway systems, how consistently does ACE2 disruption reduce authentic SARS-CoV-2 entry, and how does host protease activity modify that dependence?",
+    "knowledge": "SARS-CoV-2 enters human cells through several factors. The ACE2 protein is a confirmed entry point, while enzymes that process proteins in human cells can also affect entry; the importance of other possible receptors remains uncertain.",
+    "next": "We will investigate how consistently disrupting ACE2 reduces entry by authentic SARS-CoV-2 in airway models relevant to humans. We will also examine whether the activity of human protein-processing enzymes changes how much entry depends on ACE2."
+  },
+  {
+    "sourceKnowledge": "ACE2-Ig and a catalytically attenuated ACE2-Ig variant showed in-vitro inhibition of SARS-CoV and 2019-nCoV spike-pseudotyped entry and spike-mediated cell fusion, supporting ACE2-targeted molecules as candidates for further treatment or prevention research; the supplied evidence does not establish clinical efficacy, safety, pharmacokinetic adequacy in humans, or protection against authentic SARS-CoV-2.",
+    "sourceNext": "Do independent SARS-CoV-2 studies confirm ACE2-Ig or related decoy-receptor activity against authentic virus and across relevant human airway models?",
+    "knowledge": "In laboratory tests, ACE2-Ig and a weakened version blocked entry by virus-like particles and reduced spike-protein-driven cell joining for SARS-CoV and the virus identified in 2019. These findings suggest that ACE2-based “decoy” molecules may be worth further study, but they do not show that the treatment works safely in people, lasts long enough in the body, or protects against the actual SARS-CoV-2 virus.",
+    "next": "We will investigate whether independent studies tested ACE2-Ig or similar decoy receptors against the actual SARS-CoV-2 virus. We will also examine results from relevant human airway models and preserve any differences or uncertainties between those findings."
+  },
+  {
+    "sourceKnowledge": "Coronavirus entry is multifactorial and context-dependent: receptor usage, spike cleavage sites, and host protease processing can differ among related viruses, so SARS-CoV-2-specific functional validation is required before assigning causal importance to any host factor or cleavage mechanism.",
+    "sourceNext": "Across published SARS-CoV-2 studies available by the cutoff, do spike cleavage-site features predict entry or tissue tropism after controlling for receptor and protease context?",
+    "knowledge": "Coronavirus entry depends on several interacting factors, including how the virus attaches to cells and how host enzymes process its spike protein. Because related viruses can differ, studies must specifically test SARS-CoV-2 before deciding whether a particular host factor or spike-cutting process is the cause.",
+    "next": "We will review published SARS-CoV-2 studies available by the cutoff to assess whether features of the spike cleavage site predict cell entry or tissue targeting after accounting for the relevant receptor and host enzymes."
+  },
+  {
+    "sourceKnowledge": "ACE2-Ig and a catalytically attenuated ACE2-Ig variant showed in-vitro inhibition of SARS-CoV and 2019-nCoV spike-pseudotyped entry and spike-mediated cell fusion, supporting ACE2-targeted molecules as candidates for further treatment or prevention research; the supplied evidence does not establish clinical efficacy, safety, pharmacokinetic adequacy in humans, or protection against authentic SARS-CoV-2.",
+    "sourceNext": "Across independent SARS-CoV-2 cohorts, how consistently does viable virus in upper-respiratory specimens precede or coincide with symptom onset, and how does it relate to secondary transmission?",
+    "knowledge": "In laboratory tests using virus-like particles, both ACE2-Ig and a version designed to have much less enzyme activity blocked entry and cell fusion linked to SARS-CoV and the virus identified in 2019. This suggests they may be worth studying further, but it does not show that they work safely in people, last long enough in the body, or protect against the actual SARS-CoV-2 virus.",
+    "next": "We will compare independent groups of people with SARS-CoV-2 to examine whether live virus in samples from the upper airways appears before or around the time symptoms begin, and how this timing may relate to spread to others."
+  },
+  {
+    "sourceKnowledge": "Across the included literature, SARS-CoV-2 RNA shedding may persist in respiratory and stool specimens, but viable-virus detection appears concentrated early in illness; RNA detection alone does not establish infectiousness or fecal-oral transmission.",
+    "sourceNext": "How do patient-level factors, specimen type, illness severity, and sampling frequency affect the apparent day-nine limit for viable-virus detection?",
+    "knowledge": "Studies suggest that SARS-CoV-2 genetic material can remain detectable in breathing-related samples and stool after illness begins. However, finding genetic material does not prove that live, infectious virus is present or that the virus spreads through feces; live virus appears to be found mainly early in illness.",
+    "next": "We will investigate how patient characteristics, the type of sample collected, illness severity, and how often samples are taken may affect the apparent nine-day limit for detecting live virus."
+  },
+  {
+    "sourceKnowledge": "ACE2 expression in maternal-fetal and fetal tissues is a hypothesis-generating anatomical observation, not proof of SARS-CoV-2 entry, vertical transmission, disease susceptibility, or a therapeutic target; functional entry remains context-dependent and requires SARS-CoV-2-specific validation.",
+    "sourceNext": "In published SARS-CoV-2 studies available by the cutoff, does ACE2 expression in placenta, fetal tissues, or neonatal lung predict functional infection after accounting for TMPRSS2 and other cofactors?",
+    "knowledge": "Finding ACE2, a cell-surface protein, in tissues around pregnancy or in the fetus only suggests a possibility worth studying. It does not prove that SARS-CoV-2 can enter those tissues, pass from mother to fetus, cause disease, or make ACE2 a useful treatment target; this still needs virus-specific testing.",
+    "next": "We will investigate whether published SARS-CoV-2 studies up to the cutoff found that ACE2 levels in the placenta, fetal tissues, or newborn lungs predict actual infection. We will also consider TMPRSS2 and other helper factors that may affect whether the virus can enter cells."
+  },
+  {
+    "sourceKnowledge": "Across the included literature, SARS-CoV-2 RNA shedding may persist in respiratory and stool specimens, but viable-virus detection appears concentrated early in illness; RNA detection alone does not establish infectiousness or fecal-oral transmission.",
+    "sourceNext": "Do independent, preferably prospective and multi-site SARS-CoV-2 studies reproduce CT classification performance across scanners, hospitals, disease severity, and prevalence settings?",
+    "knowledge": "Studies suggest that genetic material from SARS-CoV-2 can remain detectable in breathing-related samples and stool. However, live virus seems to be found mainly early in illness, and finding viral genetic material alone does not prove that someone can infect others or that infection spreads through stool.",
+    "next": "We will investigate whether independent studies, preferably planned in advance and conducted at multiple sites, find similar results for CT scan classification across different scanners, hospitals, illness severities, and levels of disease prevalence."
+  }
+]

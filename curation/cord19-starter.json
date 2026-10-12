@@ -1,0 +1,24 @@
+{
+  "corpus_version": "cord19-2020-starter-v1",
+  "selection_policy": "topic-balanced-abstracts-v1",
+  "per_month": 8,
+  "background_limit": 20,
+  "quarantine_limit": 30,
+  "chunk_characters": 1600,
+  "snapshots": [
+    {
+      "release": "2020-03-13",
+      "metadata_file": "data/cord19/metadata-2020-03-13.csv",
+      "source_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/all_sources_metadata_2020-03-13.csv",
+      "observed_at": "2020-03-16T17:30:08.000Z",
+      "date_evidence": "AI2 historical snapshot 2020-03-13; S3 LastModified is 2020-03-16T17:30:08Z. Use the later object timestamp as a conservative availability upper bound, not the paper publication date."
+    },
+    {
+      "release": "2020-12-31",
+      "metadata_file": "data/cord19/metadata-2020-12-31.csv",
+      "source_url": "https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-12-31/metadata.csv",
+      "observed_at": "2020-12-31T23:11:21.000Z",
+      "date_evidence": "AI2 historical snapshot 2020-12-31; S3 LastModified is 2020-12-31T23:11:21Z. Snapshot proves this abstract version existed by this timestamp; earlier text-version availability has not been independently reviewed."
+    }
+  ]
+}

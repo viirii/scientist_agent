@@ -1,0 +1,15 @@
+[
+  {
+    "id": "early-ace2-receptor-observation",
+    "corpusVersion": "cord19-2020-fulltext-v1",
+    "versionId": "doi:doi.org/10.1101/2020.01.22.915660:051f42847aa2164e2cb9843002649b30e5fcc2e67c93e375beee12bbefb8db82",
+    "contentHash": "051f42847aa2164e2cb9843002649b30e5fcc2e67c93e375beee12bbefb8db82",
+    "availableAt": "2020-03-16T17:30:08.000Z",
+    "matchAll": ["ace2", "receptor"],
+    "observation": "The authors report that human ACE2 is a receptor for the emerging 2019-nCoV.",
+    "limitations": "Abstract-level author report. This does not establish protective immunity, patient outcomes, or the necessity of ACE2 in every biological setting; related evidence is not automatic confirmation of a proposed hypothesis.",
+    "quoteStart": 1067,
+    "quote": "confirm that human ACE2 is the receptor for the recently emerging 2019-nCoV.",
+    "review": {"status": "reviewed", "reviewer": "Codex implementation review", "method": "Manually compared this narrow observation and verbatim quote with the gated Mongo abstract. Scientist review remains pending."}
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "name": "scientist-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "npm run build && node src/server.js",
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "pretest": "npm run build",
+    "test": "node --test",
+    "check": "tsc --noEmit && node --check src/server.js && node --check src/replay.js",
+    "mongo:check": "node scripts/mongo.js",
+    "mongo:setup": "node scripts/mongo.js --setup",
+    "corpus:import": "node scripts/import-cord19.js",
+    "corpus:inspect": "node scripts/inspect-corpus.js",
+    "corpus:import-all": "node scripts/import-complete-cord19.js",
+    "state:check": "node scripts/check-state-store.js",
+    "state:migrate": "node scripts/migrate-state.js"
+  },
+  "dependencies": {
+    "csv-parse": "7.0.3",
+    "mongodb": "^7.7.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  }
+}
